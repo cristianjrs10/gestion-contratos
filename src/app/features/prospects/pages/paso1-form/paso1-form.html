@@ -1,0 +1,143 @@
+<div class="container">
+
+  <div class="card">
+
+    <h2>Paso 1: Información del Prospecto</h2>
+
+    <!-- A. DATOS -->
+    <h3>A. Datos del Cliente</h3>
+
+    <form>
+
+      <div class="grid">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre Completo</mat-label>
+          <input matInput placeholder="Juan Pérez González" [(ngModel)]="form.nombre" name="nombre">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>RUT</mat-label>
+          <input matInput placeholder="12.345.678-9" [(ngModel)]="form.rut" name="rut">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Documento de Identidad</mat-label>
+          <input matInput placeholder="CL123456789" [(ngModel)]="form.documento" name="documento">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>RUT Empresa</mat-label>
+          <input matInput placeholder="76.123.456-7" [(ngModel)]="form.rutEmpresa" name="rutEmpresa">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput placeholder="correo@empresa.cl" [(ngModel)]="form.email" name="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input matInput placeholder="+56" [(ngModel)]="form.telefono" name="telefono">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full">
+          <mat-label>Dirección Comercial</mat-label>
+          <input matInput placeholder="Av. Libertador Bernardo O'Higgins 1234" [(ngModel)]="form.direccion" name="direccion">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full error">
+          <mat-label>Comuna</mat-label>
+          <input matInput placeholder="Seleccione una comuna" [(ngModel)]="form.comuna" name="comuna">
+          <mat-error>Seleccione una comuna</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <!-- B. FOTO -->
+      <h3>B. Fotografía de Cédula de Identidad</h3>
+        <div class="upload-box">
+        <p>Cargue una fotografía de su cédula de identidad</p>
+
+        <!-- 🔥 INPUT OCULTO -->
+        <input
+            #fileInput
+            type="file"
+            (change)="onFileSelected($event)"
+            accept="image/*,application/pdf"
+            hidden
+        />
+
+        <!-- 🔥 BOTÓN QUE DISPARA EL INPUT -->
+        <button
+            mat-raised-button
+            class="btn-upload"
+            (click)="fileInput.click()"
+        >
+            Subir Foto
+        </button>
+
+        <!-- ✅ NOMBRE ARCHIVO -->
+        <div *ngIf="selectedFile" style="margin-top:10px;">
+            📎 {{ selectedFile.name }}
+        </div>
+
+        <!-- ❌ ERROR -->
+        <div *ngIf="fileError" class="alert-warning" style="margin-top:10px;">
+            ⚠️ {{ fileError }}
+        </div>
+        </div>
+
+      <!-- C. TIPO CONTRATO -->
+      <h3>Tipo de Contrato</h3>
+
+      <mat-radio-group class="contract-options" [(ngModel)]="form.tipoContrato" name="tipoContrato">
+        <label class="option" [class.selected]="form.tipoContrato === 'arriendo'">
+          <mat-radio-button value="arriendo"></mat-radio-button>
+          <div>
+            <strong>Contrato de Arriendo</strong>
+            <p>Para arrendamiento de propiedades</p>
+          </div>
+        </label>
+
+        <label class="option" [class.selected]="form.tipoContrato === 'compra'">
+          <mat-radio-button value="compra"></mat-radio-button>
+          <div>
+            <strong>Contrato de Compraventa</strong>
+            <p>Para compra y venta de bienes</p>
+          </div>
+        </label>
+
+        <label class="option" [class.selected]="form.tipoContrato === 'servicio'">
+          <mat-radio-button value="servicio"></mat-radio-button>
+          <div>
+            <strong>Contrato de Servicio</strong>
+            <p>Para prestación de servicios</p>
+          </div>
+        </label>
+      </mat-radio-group>
+
+      <!-- DOCUMENTOS -->
+      <h3>Documentos Adjuntos (opcional)</h3>
+
+      <div class="file-upload">
+        <button mat-raised-button color="warn">Examinar...</button>
+        <span>No se han seleccionado archivos.</span>
+      </div>
+
+      <!-- ACTION -->
+      <div class="actions">
+        <button 
+            mat-raised-button 
+            color="warn" 
+            type="button" 
+            (click)="continuar()">
+          Continuar→
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

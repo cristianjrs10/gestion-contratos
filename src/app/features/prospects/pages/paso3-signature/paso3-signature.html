@@ -1,0 +1,82 @@
+<div class="container">
+
+  <div class="card">
+
+    <h2>Paso 3: Autenticación y Firma</h2>
+
+    <!-- TERMINOS -->
+    <h3>Términos y Condiciones</h3>
+
+    <div class="terms-box">
+      <p>
+        Al firmar este documento, usted acepta los siguientes términos y condiciones:
+      </p>
+
+    <ul class="terms-list">
+        <li>He leído y entiendo completamente el contrato presentado en el paso anterior.</li>
+        <li>Confirmo que toda la información proporcionada es correcta y verdadera.</li>
+        <li>Acepto quedar legalmente vinculado por los términos del contrato.</li>
+        <li>Autorizo el envío de documentos a la casilla de correo designada por Correos de Chile.</li>
+        <li>Autorizo el almacenamiento de mis documentos en el repositorio de Correos de Chile.</li>
+        <li>Entiendo que esta es una firma electrónica simple con validez legal.</li>
+        <li>Acepto recibir notificaciones por correo electrónico a {{ prospect.email || '—' }}.</li>
+    </ul>      
+
+      <mat-checkbox [(ngModel)]="accepted" (change)="onAcceptedChange()">
+        Acepto los términos y condiciones descritos anteriormente
+      </mat-checkbox>
+    </div>
+
+    <!-- ALERT -->
+    <div *ngIf="!accepted && submitted" class="alert-warning">
+      ⚠️ Debes aceptar los términos antes de continuar
+    </div>
+
+    <!-- METODO -->
+    <h3>C. Método de Autenticación</h3>
+
+    <mat-radio-group [(ngModel)]="metodo" name="metodo" class="contract-options"  (change)="onMetodoChange()">
+
+      <label class="option" [class.selected]="metodo === 'simple'">
+        <mat-radio-button value="simple"></mat-radio-button>
+        <div>
+          <strong>Firma Digital Simple</strong>
+          <p>Autenticación mediante validación básica</p>
+        </div>
+      </label>
+
+    </mat-radio-group>
+
+    <div *ngIf="showFirma" class="firma-box">
+
+        <h3>Complete la autenticación con Firma Digital Simple</h3>
+
+        <button class="button-primary" (click)="firmar()">
+            Firmar
+        </button>
+
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+        <button 
+            mat-stroked-button 
+            type="button"
+            (click)="volver()">
+            ← Volver
+        </button>
+
+        <button 
+            mat-raised-button 
+            color="warn" 
+            type="button"
+            (click)="continuar()">
+            Continuar →
+        </button>
+
+    </div>
+
+  </div>
+
+</div>

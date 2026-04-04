@@ -1,0 +1,46 @@
+.wizard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 16px;
+}
+
+/* CONTENEDOR VERTICAL */
+.step-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CIRCULO */
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.step.active {
+  background: #333;
+  color: white;
+}
+
+/* TEXTO */
+.step-container span {
+  margin-top: 6px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* LINEA */
+.line {
+  width: 60px;
+  height: 2px;
+  background: #ccc;
+  margin: 0 10px;
+}

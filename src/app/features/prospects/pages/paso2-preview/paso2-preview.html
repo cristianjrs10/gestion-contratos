@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="card">
+        <div class="page-header">
+            <h2>Paso 2: Preview del Contrato</h2>
+            <p>Revisa los datos del prospecto y el texto del contrato antes de continuar.</p>
+        </div>
+            
+        <section class="prospect-card">
+            <div class="card-header">
+            <h3>Datos del Prospecto</h3>
+            </div>
+
+            <div class="prospect-grid">
+            <div class="field">
+                <span class="label">Nombre:</span>
+                <span class="value">{{ prospect.nombre || '—' }}</span>
+            </div>
+            <div class="field">
+                <span class="label">RUT:</span>
+                <span class="value">{{ prospect.rut || '—' }}</span>
+            </div>
+            <div class="field">
+                <span class="label">Email:</span>
+                <span class="value">{{ prospect.email || '—' }}</span>
+            </div>
+            <div class="field">
+                <span class="label">Teléfono:</span>
+                <span class="value">{{ prospect.telefono || '—' }}</span>
+            </div>
+            <div class="field">
+                <span class="label">Dirección:</span>
+                <span class="value">{{ prospect.direccion || '—' }}</span>
+            </div>
+            <div class="field">
+                <span class="label">Comuna:</span>
+                <span class="value">{{ prospect.comuna || '—' }}</span>
+            </div>            
+            <div class="field full-width">
+                <span class="label">Tipo de Contrato:</span>
+                <span class="value">{{ prospect.tipoContrato === 'arriendo' ? 'Contrato de Arriendo' : prospect.tipoContrato === 'compra' ? 'Contrato de Compraventa' : 'Contrato de Servicio' }}</span>
+            </div>
+            </div>
+        </section>        
+        <section class="contract-card">
+            <div class="contract-icon"><span class="icon-emoji">📄</span></div>
+
+            <div class="contract-paper"> <!-- 👈 NUEVO -->
+
+                <div class="contract-body">
+                    <p class="contract-title">{{ getTituloContrato() }}</p>
+                    <p>En la ciudad de Santiago, a {{ today | date:'d \'de\' MMMM \'de\' y':'':'es' }}, entre:</p>
+                    
+
+                    <div class="contract-block">
+                        <p><strong>ARRENDADOR:</strong> Correos de Chile</p>
+                        <p><strong>ARRENDATARIO:</strong> {{ prospect.nombre || '—' }}</p>
+                        <p><strong>RUT:</strong> {{ prospect.rut || '—' }}</p>
+                        <p><strong>Dirección:</strong> {{ prospect.direccion || '—' }}</p>
+                        <p><strong>Email:</strong> {{ prospect.email || '—' }}</p>
+                        <p><strong>Teléfono:</strong> {{ prospect.telefono || '—' }}</p>
+                    </div>
+
+                    <div *ngFor="let clausula of getClausulas()">
+                    <p class="section-heading">{{ clausula.titulo }}</p>
+                    <p [innerHTML]="clausula.contenido"></p>
+                    </div>
+                </div>
+
+            </div> <!-- 👈 FIN -->
+        </section>
+
+
+        <div class="alert-warning">
+        ⚠️ Por favor, revise cuidadosamente toda la información antes de continuar. En el siguiente paso podrá firmar el contrato.
+        </div> 
+
+
+        <!-- ACTIONS -->
+        <div class="actions">
+
+            <button 
+                mat-raised-button 
+                color="warn"
+                type="button"
+                (click)="volver()">
+                ← Volver
+            </button>
+
+            <button 
+                mat-raised-button 
+                color="warn" 
+                type="button"
+                (click)="continuar()">
+                Continuar→
+            </button>
+
+        </div>  
+    </div>
+</div>

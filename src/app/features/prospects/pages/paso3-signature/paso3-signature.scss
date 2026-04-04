@@ -1,0 +1,132 @@
+/* 🔥 BASE GLOBAL */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+  width: 100%;
+}
+
+/* 🧱 CARD */
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 900px; /* 🔥 reemplaza width fijo */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* 📄 TÉRMINOS */
+.terms-box {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+/* 🎯 OPCIONES */
+.contract-options {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  flex-wrap: wrap; /* 🔥 clave para responsive */
+}
+
+.option {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  cursor: pointer;
+
+  /* 🔥 mejora visual */
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  border-color: #999;
+}
+
+.option.selected {
+  border: 2px solid #111;
+  background: #f3f4f6;
+}
+
+/* 🔥 BOTONES */
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* 📱 MOBILE (igual filosofía que paso 2) */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 16px 8px;
+  }
+
+  /* ❌ quitamos efecto card */
+  .card {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 16px;
+    max-width: 100%;
+    background: transparent;
+  }
+
+  .terms-box {
+    padding: 12px;
+  }
+
+  /* 🔥 opciones en columna natural */
+  .contract-options {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    padding: 14px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}
+
+/* 💻 DESKTOP MEJORADO */
+@media (min-width: 768px) {
+
+  /* 🔥 si tienes 2 opciones, quedan lado a lado */
+  .contract-options {
+    flex-wrap: nowrap;
+  }
+
+  .option {
+    flex: 1; /* 🔥 se distribuyen proporcionalmente */
+  }
+}
+
+
+/* alerta */
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid #ffeeba;
+  margin-bottom: 20px;
+  font-size: 14px;
+}

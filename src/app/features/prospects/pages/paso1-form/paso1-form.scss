@@ -1,0 +1,144 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 16px; /* 👈 evita que pegue a los bordes en mobile */
+}
+
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: 10px;
+  width: 100%;           /* 👈 clave */
+  max-width: 900px;      /* 👈 mantiene tu layout original */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+h3 {
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.full {
+  grid-column: span 2;
+}
+
+.upload-box {
+  background: #f3f4f6;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.btn-upload {
+  background: #d52b1e !important;
+  color: white !important;
+  width: 100%;          /* 👈 antes 300px */
+  max-width: 300px;     /* 👈 mantiene estética */
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.contract-options {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* 👇 CARD REAL */
+.option {
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 12px; /* 👈 más consistente visualmente */
+  display: flex;
+  align-items: flex-start; /* 👈 evita que se deforme */
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* 👇 clave para que no se rompa */
+  box-sizing: border-box;
+  min-height: 70px;
+}
+
+/* 👇 contenido interno */
+.option div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 👇 evita que el radio rompa el layout */
+.option mat-radio-button {
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* hover sutil (UX pro) */
+.option:hover {
+  border-color: #999;
+}
+
+/* seleccionado */
+.option.selected {
+  border: 2px solid #333;
+}
+
+.option.selected {
+  border: 2px solid #333;
+}
+
+.file-upload {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #f3f4f6;
+  padding: 10px;
+  border-radius: 6px;
+  flex-wrap: wrap; /* 👈 clave */
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* 🔥 RESPONSIVE */
+@media (max-width: 768px) {
+
+  .grid {
+    grid-template-columns: 1fr; /* 👈 pasa a una columna */
+  }
+
+  .full {
+    grid-column: span 1;
+  }
+
+  .contract-options {
+    flex-direction: column; /* 👈 cards verticales */
+  }
+
+  .actions {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 20px; /* 👈 mejor espacio en mobile */
+  }
+}

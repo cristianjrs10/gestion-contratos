@@ -1,0 +1,66 @@
+<div class="container">
+
+  <div class="card">
+
+    <h2>Paso 4: Confirmación y Envío</h2>
+
+    <h3>Contrato Listo para Envío</h3>
+
+    <p class="intro">
+      El contrato ha sido firmado exitosamente. Al presionar el botón de envío, se realizarán las siguientes acciones:
+    </p>
+
+    <!-- ACCIONES -->
+    <div class="info-box">
+      <h4>📧 Envío de Correo Electrónico</h4>
+      <p>
+        Se enviará un correo a la casilla designada por Correos de Chile con el contrato firmado y todos los documentos adjuntos.
+      </p>
+
+      <h4>📁 Almacenamiento en Repositorio</h4>
+      <p>
+        Los documentos se guardarán en el repositorio compartido de Correos de Chile para su respaldo y consulta posterior.
+      </p>
+
+      <h4>🔔 Notificación al Cliente</h4>
+      <p>
+        Se enviará una notificación de confirmación a {{ prospect.email || '—' }} con el resumen del contrato firmado.
+      </p>
+    </div>
+
+    <!-- DETALLE -->
+    <div class="detail-box">
+      <h3>Detalles del Envío</h3>
+
+      <div class="detail-grid">
+        <div><strong>Firmante:</strong> {{ prospect.nombre }}</div>
+        <div><strong>RUT:</strong> {{ prospect.rut }}</div>
+        <div><strong>Tipo de Contrato:</strong> {{ prospect.tipoContrato }}</div>
+        <div><strong>Documentos Adjuntos:</strong> 0 archivo(s)</div>
+        <div><strong>Fecha y Hora:</strong> {{ fecha }}</div>
+      </div>
+    </div>
+
+    <!-- ACTIONS -->
+    <div class="actions">
+
+    <button 
+        mat-stroked-button 
+        type="button"
+        (click)="volver()">
+        ← Volver
+    </button>
+
+    <button 
+        mat-raised-button 
+        color="warn" 
+        type="button"
+        (click)="enviar()">
+        Enviar Contrato
+    </button>
+
+    </div>
+
+  </div>
+
+</div>
