@@ -36,7 +36,7 @@
         <div><strong>Firmante:</strong> {{ prospect.nombre }}</div>
         <div><strong>RUT:</strong> {{ prospect.rut }}</div>
         <div><strong>Tipo de Contrato:</strong> {{ prospect.tipoContrato }}</div>
-        <div><strong>Documentos Adjuntos:</strong> 0 archivo(s)</div>
+        <div><strong>Documentos Adjuntos:</strong> {{ prospect.uploadedFile ? 1 : 0 }} archivo(s)</div>
         <div><strong>Fecha y Hora:</strong> {{ fecha }}</div>
       </div>
     </div>
@@ -55,7 +55,8 @@
         mat-raised-button 
         color="warn" 
         type="button"
-        (click)="enviar()">
+        (click)="enviar()"
+        class="btn-continue">
         Enviar Contrato
     </button>
 

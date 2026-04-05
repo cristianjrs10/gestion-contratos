@@ -107,11 +107,16 @@ h3 {
   flex-wrap: wrap; /* 👈 clave */
 }
 
-.actions {
+.actions {  
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
+}
+
+.btn-continue {
+  background: #d52b1e !important;
+  color: white !important;
 }
 
 /* 🔥 RESPONSIVE */

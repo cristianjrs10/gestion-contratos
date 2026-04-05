@@ -12,7 +12,9 @@ import localeEs from '@angular/common/locales/es';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+    provideRouter(
+      routes
+    ),
     provideHttpClient(withInterceptors([errorInterceptor])),
 
     { provide: LOCALE_ID, useValue: 'es-CL' } 

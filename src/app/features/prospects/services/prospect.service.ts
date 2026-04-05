@@ -11,6 +11,7 @@ export interface ProspectData {
   comuna: string;
   tipoContrato: string;
   acceptedTerms: boolean;
+  uploadedFile: null | File; 
 }
 
 @Injectable({
@@ -27,7 +28,8 @@ export class ProspectService {
     direccion: '',
     comuna: '',
     tipoContrato: 'arriendo',
-    acceptedTerms: false
+    acceptedTerms: false,
+    uploadedFile: null
   };
 
   setProspect(data: ProspectData) {

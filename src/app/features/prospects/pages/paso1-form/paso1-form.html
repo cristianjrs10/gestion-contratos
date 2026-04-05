@@ -57,35 +57,35 @@
       <!-- B. FOTO -->
       <h3>B. Fotografía de Cédula de Identidad</h3>
         <div class="upload-box">
-        <p>Cargue una fotografía de su cédula de identidad</p>
+            <p>Cargue una fotografía de su cédula de identidad</p>
 
-        <!-- 🔥 INPUT OCULTO -->
-        <input
-            #fileInput
-            type="file"
-            (change)="onFileSelected($event)"
-            accept="image/*,application/pdf"
-            hidden
-        />
+            <!-- 🔥 INPUT OCULTO -->
+            <input
+                #fileInput
+                type="file"
+                (change)="onFileSelected($event)"
+                accept="image/*,application/pdf"
+                hidden
+            />
 
-        <!-- 🔥 BOTÓN QUE DISPARA EL INPUT -->
-        <button
-            mat-raised-button
-            class="btn-upload"
-            (click)="fileInput.click()"
-        >
-            Subir Foto
-        </button>
+            <!-- 🔥 BOTÓN QUE DISPARA EL INPUT -->
+            <button
+                mat-raised-button
+                class="btn-upload"
+                (click)="fileInput.click()"
+            >
+                Subir Foto
+            </button>
 
-        <!-- ✅ NOMBRE ARCHIVO -->
-        <div *ngIf="selectedFile" style="margin-top:10px;">
-            📎 {{ selectedFile.name }}
-        </div>
+            <!-- ✅ NOMBRE ARCHIVO -->
+            <div *ngIf="selectedFile" style="margin-top:10px;">
+                📎 {{ selectedFile.name }}
+            </div>
 
-        <!-- ❌ ERROR -->
-        <div *ngIf="fileError" class="alert-warning" style="margin-top:10px;">
-            ⚠️ {{ fileError }}
-        </div>
+            <!-- ❌ ERROR -->
+            <div *ngIf="fileError" class="alert-warning" style="margin-top:10px;">
+                ⚠️ {{ fileError }}
+            </div>
         </div>
 
       <!-- C. TIPO CONTRATO -->
@@ -131,7 +131,8 @@
             mat-raised-button 
             color="warn" 
             type="button" 
-            (click)="continuar()">
+            (click)="continuar()"
+            class="btn-continue">
           Continuar→
         </button>
       </div>

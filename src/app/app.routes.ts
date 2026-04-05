@@ -34,6 +34,11 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'paso1',
         pathMatch: 'full'
+      },
+      {
+        path: '**',
+        redirectTo: 'paso1',
+        pathMatch: 'full'
       }
     ]
   }

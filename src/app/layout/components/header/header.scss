@@ -1,16 +1,40 @@
+/* Importa Montserrat en tu styles.scss o dentro del componente global */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
 .header {
-  background: #d52b1e;
+  background: #e3231b;
   color: white;
   display: flex;
   align-items: center;
   padding: 16px 24px;
+  position: relative;
 }
 
 .logo {
-  font-weight: bold;
-  margin-right: 24px;
+  img {
+    height: 40px;
+    width: auto;
+    display: block;
+  }
 }
 
 .title {
-  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: sans-serif; /* ← cambio de fuente */
+  font-weight: 700;                       /* más “title-like” */
+  font-size: 28px;
+  white-space: nowrap;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .title {
+    font-size: 18px;
+  }
+
+  .logo img {
+    height: 30px;
+  }
 }

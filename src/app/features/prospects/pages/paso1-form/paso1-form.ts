@@ -36,7 +36,8 @@ export class Paso1Form {
     direccion: '',
     comuna: '',
     tipoContrato: 'arriendo',
-    acceptedTerms: false
+    acceptedTerms: false,
+    uploadedFile: null
   };
 
   // 🔥 NUEVO
@@ -55,14 +56,15 @@ export class Paso1Form {
   constructor(
     private router: Router,
     private prospectService: ProspectService
-  ) {}
+  ) {
 
-  ngOnInit() {
-    const data = this.prospectService.getProspect();
+    this.form = this.prospectService.getProspect();
 
-    if (data) {
-      this.form = data;
+    // si ya había un archivo subido, lo mostramos
+    if (this.form.uploadedFile) {
+      this.selectedFile = this.form.uploadedFile;
     }
+
   }
 
 
@@ -88,7 +90,7 @@ export class Paso1Form {
     this.selectedFile = file;
 
     // opcional: guardar nombre en form
-    //this.form.documento = file.name;
+    this.form.uploadedFile = file;
   }
 
   // 🔥 CONTINUAR
