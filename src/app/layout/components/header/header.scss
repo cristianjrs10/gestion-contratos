@@ -1,16 +1,15 @@
-/* Importa Montserrat en tu styles.scss o dentro del componente global */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
-
 .header {
   background: #e3231b;
   color: white;
   display: flex;
   align-items: center;
   padding: 16px 24px;
-  position: relative;
+  position: relative; /* necesario para que el título absoluto se centre */
 }
 
+/* Logo siempre visible */
 .logo {
+  position: relative; /* logo normal a la izquierda */
   img {
     height: 40px;
     width: auto;
@@ -18,23 +17,28 @@
   }
 }
 
+/* Título centrado solo en desktop */
 .title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-family: sans-serif; /* ← cambio de fuente */
-  font-weight: 700;                       /* más “title-like” */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   font-size: 28px;
   white-space: nowrap;
 }
 
-/* Responsivo */
+/* Responsivo para móviles */
 @media (max-width: 600px) {
   .title {
-    font-size: 18px;
+    display: none; /* ocultamos el título */
+  }
+
+  .header {
+    justify-content: center; /* centramos el logo */
   }
 
   .logo img {
-    height: 30px;
+    height: 40px; /* reducimos tamaño del logo */
   }
 }

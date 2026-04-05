@@ -25,12 +25,15 @@
       <mat-checkbox [(ngModel)]="accepted" (change)="onAcceptedChange()">
         Acepto los términos y condiciones descritos anteriormente
       </mat-checkbox>
+
+      <!-- ALERT -->
+      <div *ngIf="!accepted && submitted" class="alert-warning">
+        ⚠️ Debes aceptar los términos antes de continuar
+      </div>
+
     </div>
 
-    <!-- ALERT -->
-    <div *ngIf="!accepted && submitted" class="alert-warning">
-      ⚠️ Debes aceptar los términos antes de continuar
-    </div>
+
 
     <!-- METODO -->
     <h3>C. Método de Autenticación</h3>
@@ -47,15 +50,24 @@
 
     </mat-radio-group>
 
-    <div *ngIf="showFirma" class="firma-box">
 
-        <h3>Complete la autenticación con Firma Digital Simple</h3>
+  <div *ngIf="showFirma" class="firma-box">
+      <h3>Complete la autenticación con Firma Digital Simple</h3>
 
-        <button class="button-primary" (click)="firmar()">
-            Firmar
-        </button>
+      <button class="button-primary" (click)="firmar()" [disabled]="signed">
+          {{ signed ? 'Firmado ✔' : 'Firmar' }}
+      </button>
 
-    </div>
+      <div *ngIf="signed" style="margin-top:10px; color: green;">
+          ✅ Su firma se ha registrado. Código: {{ signatureHash }}
+      </div>
+
+      <div *ngIf="!signed && submitted" class="alert-warning">
+      ⚠️ Debes firmar los términos antes de continuar
+      </div>
+
+  </div>   
+
 
     <!-- ACTIONS -->
     <div class="actions">

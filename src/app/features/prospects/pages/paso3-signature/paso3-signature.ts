@@ -20,7 +20,10 @@ export class Paso3Signature {
   accepted = false;
   metodo = 'simple';
   submitted = false;
-  showFirma = false;
+
+  showFirma = true;
+  signed = false;
+  signatureHash: string | null = null;  
   
   constructor(
     private router: Router,
@@ -44,7 +47,8 @@ export class Paso3Signature {
     this.submitted = true;
 
     if (!this.accepted) return;
-    
+    if (!this.signed) return;
+
     this.prospect.acceptedTerms = this.accepted;
     
     // Aquí iría backend / firma real
@@ -53,8 +57,7 @@ export class Paso3Signature {
 
 
   onAcceptedChange() {
-    this.prospect.acceptedTerms = this.accepted;
-    
+    this.prospect.acceptedTerms = this.accepted;  
   }
 
   onMetodoChange() {
@@ -62,7 +65,29 @@ export class Paso3Signature {
   }  
 
   firmar() {
-    console.log('Firmado correctamente');
+    const prospect: ProspectData = this.prospectService.getProspect();
+
+    // Crear una "firma simple" usando nombre, RUT y timestamp
+    const dataToSign = `${prospect.nombre}|${prospect.rut}|${new Date().toISOString()}`;
+    this.signatureHash = this.simpleHash(dataToSign);
+
+    // Guardar en el prospect
+    prospect.signatureHash = this.signatureHash;
+    this.prospectService.setProspect(prospect);
+
+    this.signed = true;
+    console.log('Firmado correctamente', this.signatureHash);
+  }
+  
+  private simpleHash(str: string): string {
+    // Hash sencillo tipo checksum (no es criptográficamente seguro)
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const chr = str.charCodeAt(i);
+      hash = (hash << 5) - hash + chr;
+      hash |= 0; // Convertir a 32bit integer
+    }
+    return 'SIG-' + Math.abs(hash);
   }  
 
 }

@@ -34,10 +34,12 @@ export class Paso1Form {
     email: '',
     telefono: '',
     direccion: '',
+    region: '',
     comuna: '',
     tipoContrato: 'arriendo',
     acceptedTerms: false,
-    uploadedFile: null
+    uploadedFile: null,
+    signatureHash: ''
   };
 
   // 🔥 NUEVO

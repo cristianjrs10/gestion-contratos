@@ -46,7 +46,13 @@
           <input matInput placeholder="Av. Libertador Bernardo O'Higgins 1234" [(ngModel)]="form.direccion" name="direccion">
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full error">
+        <mat-form-field appearance="outline">
+          <mat-label>Región</mat-label>
+          <input matInput placeholder="Seleccione una región" [(ngModel)]="form.region" name="region">
+          <mat-error>Seleccione una región</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" >
           <mat-label>Comuna</mat-label>
           <input matInput placeholder="Seleccione una comuna" [(ngModel)]="form.comuna" name="comuna">
           <mat-error>Seleccione una comuna</mat-error>

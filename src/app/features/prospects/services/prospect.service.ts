@@ -8,10 +8,12 @@ export interface ProspectData {
   email: string;
   telefono: string;
   direccion: string;
+  region: string;
   comuna: string;
   tipoContrato: string;
   acceptedTerms: boolean;
-  uploadedFile: null | File; 
+  uploadedFile: null | File;
+  signatureHash: string;
 }
 
 @Injectable({
@@ -25,11 +27,13 @@ export class ProspectService {
     rutEmpresa: '',
     email: '',
     telefono: '',
+    region: '',
     direccion: '',
     comuna: '',
     tipoContrato: 'arriendo',
     acceptedTerms: false,
-    uploadedFile: null
+    uploadedFile: null,
+    signatureHash: ''
   };
 
   setProspect(data: ProspectData) {

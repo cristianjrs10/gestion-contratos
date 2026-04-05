@@ -8,7 +8,7 @@
 .container {
   display: flex;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 24px 5px;
   width: 100%;
 }
 
@@ -124,6 +124,30 @@
   }
 }
 
+.button-primary {
+  background-color: #d52b1e;   // rojo CorreosChile
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+
+  &:hover:not(:disabled) {
+    background-color: #b21f1a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+  }
+
+  &:disabled {
+    background-color: #999;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+}
 
 /* alerta */
 .alert-warning {
@@ -134,4 +158,5 @@
   border: 1px solid #ffeeba;
   margin-bottom: 20px;
   font-size: 14px;
+  margin-top:10px;
 }
